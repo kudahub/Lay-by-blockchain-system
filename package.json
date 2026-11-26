@@ -1,0 +1,43 @@
+{
+  "name": "lay-by-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"node server.js\" \"vite --host 127.0.0.1\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "db:dev": "pglite-server --db=.local-db --port=5432 --host=127.0.0.1 --max-connections=10",
+    "db:migrate": "node scripts/migrate.js",
+    "db:create-admin": "node scripts/create-admin.js",
+    "contracts:compile": "node scripts/compile-contracts.js",
+    "contracts:deploy:fuji": "node scripts/deploy-contracts.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.120.5",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
+    "dotenv": "^16.6.1",
+    "ethers": "^6.15.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "lucide-react": "^0.468.0",
+    "pg": "^8.16.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.6.0",
+    "@electric-sql/pglite-socket": "^0.3.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.33",
+    "solc": "^0.8.30",
+    "tailwindcss": "^3.4.18",
+    "vite": "^7.3.8"
+  }
+}
