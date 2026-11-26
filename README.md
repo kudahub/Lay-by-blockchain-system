@@ -1,6 +1,41 @@
-# Lay-by System
+Blockchain Lay-by Platform 🇿🇦
+A decentralised blockchain-powered lay-by platform designed to modernise traditional instalment purchasing in South Africa.
 
-React/Vite frontend with a Node.js API, PostgreSQL persistence, and Fuji-only escrow contracts.
+## Overview
+The platform leverages blockchain technology to provide transparent, secure and automated lay-by agreements between buyers and sellers. Built on the Avalanche Fuji Testnet, it uses Solidity smart contracts and Core Wallet integration to facilitate blockchain-based transactions.
+
+## Key Features
+- Blockchain-powered agreements: Smart contracts manage lay-by agreements.
+- Secure instalments: Transparent payment tracking and transaction verification.
+- South African currency: Designed around South African Rand (ZAR).
+- Core Wallet integration: Connect and interact with the Avalanche ecosystem.
+- Transaction transparency: On-chain records provide verifiable transaction history.
+- Buyer and seller access: A platform designed for both sides of a lay-by agreement.
+
+## Technology Stack
+- Blockchain: Avalanche Fuji Testnet
+- Smart contracts: Solidity
+- Wallet: Core Wallet
+- Frontend: React and Vite
+- Backend: Node.js and Express
+- Database: PostgreSQL-compatible; PGlite is available for local development
+- Development: Visual Studio Code
+
+## Blockchain Architecture
+The platform uses smart contracts to manage the underlying lay-by agreements, payment conditions and transaction records.
+
+**Network:** Avalanche Fuji Testnet (chain ID 43113).
+
+## Project Status
+Under active development. Fuji agreement flows require deployed contract addresses. Binance Pay invoicing, production webhook verification, oracle relay, AI assistance, and on-chain dual-party revisions are not live integrations; the interface labels previews and pending services accordingly.
+
+## Security
+Never share wallet seed phrases, private keys, API secrets or environment credentials. This project is intended for testnet development and experimentation.
+
+## Author
+Kudahub
+
+Building a more transparent and accessible future for instalment payments in South Africa.
 
 ## Local setup
 
@@ -15,12 +50,12 @@ The testnet contracts must be deployed separately. Compile with `npm run contrac
 
 To create an administrator, set `ADMIN_EMAIL`, `ADMIN_NAME`, and `ADMIN_PASSWORD` in `.env`, then run `npm run db:create-admin`. Admin accounts cannot be created through public registration.
 
-## Reference architecture
+## Two-rail reference architecture
 
 The application separates two financial rails:
 
-- **Retailer subscription rail:** Starter (R199/month), Business (R399/month), and Enterprise (R999/month) → Binance Pay merchant invoice → signed webhook verification → subscription activation/renewal. The subscriptions page includes an editable revenue mix and a local invoice preview; no Binance request or entitlement change is made. Customers never need a paid plan to use lay-by.
-- **Customer agreement rail:** retailer creates version 1 → customer accepts → Fuji escrow records instalments → API reconciles confirmed contract events → cancellation or completion settles from the ledger. Customer-facing agreement details remain off-chain.
+- **Retailer subscription rail:** Starter (R199/month), Business (R399/month), and Enterprise (R999/month) -> Binance Pay merchant invoice -> signed webhook verification -> subscription activation/renewal. The subscriptions page includes an editable revenue mix and a local invoice preview; no Binance request or entitlement change is made. Customers never need a paid plan to use lay-by.
+- **Customer agreement rail:** retailer creates version 1 -> customer accepts -> Fuji escrow records instalments -> API reconciles confirmed contract events -> cancellation or completion settles from the ledger. Customer-facing agreement details remain off-chain.
 
 The architecture view also includes a deterministic hardship-schedule preview based on the selected active agreement, with separate customer and retailer demo approvals. It does not call an AI model or write a contract revision. Encrypted document storage/IPFS anchoring and zero-knowledge proofs are listed as extensions, not implemented services.
 
